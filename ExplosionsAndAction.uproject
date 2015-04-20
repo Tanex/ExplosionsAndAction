@@ -3,6 +3,13 @@
 	"EngineAssociation": "4.7",
 	"Category": "",
 	"Description": "",
+	"Modules": [
+		{
+			"Name": "ExplosionsAndAction",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
 	"Plugins": [
 		{
 			"Name": "Paper2D",
