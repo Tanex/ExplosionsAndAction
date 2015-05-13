@@ -212,12 +212,12 @@ void ATcpMsgListener::TcpSocketListener()
 	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("As String Data ~> %s"), *receivedUE4String));
 }
 
-void ATcpMsgListener::receivedLoginSuccessful()
+void ATcpMsgListener::receivedLoginSuccessful_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Login Successful!")));
 }
 
-void ATcpMsgListener::receivedLoginRefused()
+void ATcpMsgListener::receivedLoginRefused_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Login Refused!")));
 }

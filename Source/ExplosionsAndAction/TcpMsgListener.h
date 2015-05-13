@@ -24,7 +24,7 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	/** Start TCP Receiver */
+	/** Start TCP Listener */
 	UFUNCTION(BlueprintCallable, Category = "LoginServ")
 	void TcpMsgListenerStart();
 
@@ -48,11 +48,15 @@ public:
 	/** Called when Actor is destroyed */
 	void EndPlay(const EEndPlayReason::Type EndPlayReason);
 
-private:
+	/** Called when a LoginSuccessful message is received */
+	UFUNCTION(BlueprintNativeEvent, Category = "LoginServ")
 	void receivedLoginSuccessful();
-	void receivedLoginRefused();
-	
 
+	/** Called when a LoginRefused message is received */
+	UFUNCTION(BlueprintNativeEvent, Category = "LoginServ")
+	void receivedLoginRefused();
+
+private:
 	FSocket* _connectionSocket;
 	FSocket* _listenerSocket;
 	FIPv4Endpoint _remoteAddressForConnection;
