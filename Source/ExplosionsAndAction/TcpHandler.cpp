@@ -3,11 +3,13 @@
 #include "ExplosionsAndAction.h"
 #include "TcpHandler.h"
 
-TSharedRef<FInternetAddr> UTcpHandler::_addr = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
 FSocket* UTcpHandler::_socket = 0;
 
 void UTcpHandler::TcpHandlerConnect()
 {
+	//Create internet adress pointer
+	TSharedRef<FInternetAddr> addr = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
+
 	//get socket
 	_socket = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateSocket(NAME_Stream, TEXT("default"), false);
 
@@ -16,11 +18,11 @@ void UTcpHandler::TcpHandlerConnect()
 	int32 port = 9059;
 	FIPv4Address ip;
 	FIPv4Address::Parse(address, ip);
-	_addr->SetIp(ip.GetValue());
-	_addr->SetPort(port);
+	addr->SetIp(ip.GetValue());
+	addr->SetPort(port);
 
 	//connect
-	bool connected = _socket->Connect(*_addr);
+	bool connected = _socket->Connect(*addr);
 }
 
 void UTcpHandler::TcpHandlerSendMsg(FString msg)

@@ -41,5 +41,4 @@ public:
 	
 private:
 	static FSocket* _socket;
-	static TSharedRef<FInternetAddr> _addr;
 };
