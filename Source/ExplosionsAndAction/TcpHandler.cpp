@@ -14,7 +14,7 @@ void UTcpHandler::TcpHandlerConnect()
 	_socket = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateSocket(NAME_Stream, TEXT("default"), false);
 
 	//prepare for connect
-	FString address = TEXT("127.0.0.1");
+	FString address = TEXT("130.243.104.250");
 	int32 port = 9059;
 	FIPv4Address ip;
 	FIPv4Address::Parse(address, ip);
