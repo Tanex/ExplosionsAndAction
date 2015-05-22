@@ -5,7 +5,7 @@
 
 FSocket* UTcpHandler::_socket = 0;
 
-void UTcpHandler::TcpHandlerConnect()
+bool UTcpHandler::TcpHandlerConnect()
 {
 	//Create internet adress pointer
 	TSharedRef<FInternetAddr> addr = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
@@ -23,6 +23,8 @@ void UTcpHandler::TcpHandlerConnect()
 
 	//connect
 	bool connected = _socket->Connect(*addr);
+
+	return connected;
 }
 
 void UTcpHandler::TcpHandlerSendMsg(FString msg)
