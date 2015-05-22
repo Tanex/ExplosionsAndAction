@@ -23,7 +23,7 @@ class EXPLOSIONSANDACTION_API UTcpHandler : public UBlueprintFunctionLibrary
 public:
 	/** Connect to server */
 	UFUNCTION(BlueprintCallable, Category = "LoginServ")
-	static void TcpHandlerConnect();
+	static bool TcpHandlerConnect();
 
 	/** Send message to server */
 	UFUNCTION(BlueprintCallable, Category = "LoginServ")
