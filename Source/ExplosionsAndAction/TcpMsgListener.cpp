@@ -28,8 +28,16 @@ void ATcpMsgListener::Tick( float DeltaTime )
 
 void ATcpMsgListener::TcpMsgListenerStart()
 {
+	TArray<TSharedPtr<FInternetAddr>> localAdress;
+	if (ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->GetLocalAdapterAddresses(localAdress))
+	{
+		for (int32 i = 0; i < localAdress.Num(); i++)
+		{
+			GEngine->AddOnScreenDebugMessage(i, 5.f, FColor::Red, localAdress[i]->ToString(false));
+		}
+	}
 	//IP = 127.0.0.1, Port = 8890 for my Python test case
-	if (!StartTcpReceiver("RamaSocketListener", "127.0.0.1", 9058))
+	if (!StartTcpReceiver("RamaSocketListener", localAdress[0]->ToString(false), 9058))
 	{
 		//UE_LOG  "TCP Socket Listener Created!"
 		return;
