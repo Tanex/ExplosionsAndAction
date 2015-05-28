@@ -42,6 +42,7 @@ void UTcpHandler::TcpHandlerAttemptLogin(FString username, FString password)
 	loginMsg += username;
 	loginMsg += FString(TEXT(":"));
 	loginMsg += password;
+	loginMsg += FString(TEXT(";"));
 
 	//Send
 	TcpHandlerSendMsg(loginMsg);
@@ -54,6 +55,7 @@ void UTcpHandler::TcpHandlerCreateAccount(FString username, FString password)
 	loginMsg += username;
 	loginMsg += FString(TEXT(":"));
 	loginMsg += password;
+	loginMsg += FString(TEXT(";"));
 
 	//Send
 	TcpHandlerSendMsg(loginMsg);
